@@ -1,0 +1,453 @@
+*******************************************************************************
+* Version 1.4.5d                                                              *
+*******************************************************************************
+
+ Bug fixes
+-----------
+
+- Fix a crash in plugin selection if no plugin are available
+- Update pdflib to version 4.0.2.0 (Fix a crash in pdf export)
+
+ New features
+--------------
+
+- Added Contextual menu in the main session window.
+
+
+
+*******************************************************************************
+* Version 1.4.5c                                                              *
+*******************************************************************************
+
+ Bug fixes
+-----------
+
+- Remove Debug code in pdf.cpp (generated reports were invalid)
+
+
+
+*******************************************************************************
+* Version 1.4.5b                                                              *
+*******************************************************************************
+
+ Bug fixes
+-----------
+
+- Silent dependencies with Nessus 2.2.3
+
+NOTE : Session configs are not longer compatible with NessusWX 1.4.4.
+       It may change again in the future (with a real fix this time).
+
+
+
+*******************************************************************************
+* Version 1.4.5                                                               *
+*******************************************************************************
+
+Previous version: 1.4.4
+
+
+ New features
+--------------
+
+- Added "silent dependencies" option, to only show results about selected 
+  plugins. This feature will in Nessus 2.4 (server side) but works with 
+  previous version (client side)
+- Summary are disabled by default in reports
+
+
+ Changes
+---------
+
+- Low as been changed to Medium in reports
+- NOTE are reported as NOTE and not WARNING
+
+
+ Bug fixes
+-----------
+
+- Fix crash in result list
+- Fix maximum count of plugins to work with Nessus 2.2.x
+- Fix crash in snmp scan
+
+
+
+*******************************************************************************
+* Version 1.4.4                                                               *
+*******************************************************************************
+
+Previous version: 1.4.3
+
+
+ New features
+--------------
+
+- Added "copy to clipboard" function to protocol tracer
+- Added plugin grouping by ID, Family, or Category in plugin selection dialog
+- Added possibility to mark vulnerabilities as false positive by plugin ID
+  (like delete)
+- Added possibility to delete multiple scans at a time in session result list
+- Added preview mode to scan status
+
+
+ Changes
+---------
+
+- Now it's possible to globally turn off warning about changing port
+  scanner selection
+- Plugin families and categories now sorted alphabetically
+- Plugin/vulnerability search made case-insensitive
+- Added "owner" field to scan results list
+- Default well-known services list expanded
+
+
+ Bug fixes
+-----------
+
+- Fix incorrect host statistic after deleting records
+
+
+
+*******************************************************************************
+* Version 1.4.3                                                               *
+*******************************************************************************
+
+Previous version: 1.4.2
+
+
+ New features
+--------------
+
+- Plugin search in plugin selection dialog
+- Export results to NBE
+- Server history added to "Connect" dialog
+- Added overall scan progress indicator to scan status window
+
+
+ Changes
+---------
+
+- Changed message area implementation to work faster and more stable
+- "Now executing" field was removed from scan status window due to new
+  behavior of Nessus 2.0.x server
+- Field "Warnings" added to scan status window
+- Now all the port scanners are disabled by default, except ping_host.nasl and
+  nmap tcp connect(). 
+
+
+ Bug fixes
+-----------
+
+- Fixed crash (jet another) in HTML report generator
+- Fixed crash caused by very long security hole descriptions
+- Fixed session renaming bugs
+- Fixed "Port general/xxx is open" records in result
+- Fix command line issues (now session names with spaces is allowed)
+- Scan finish timestamp now set to the actual scan finish time, not to the time
+  when scan status window was closed
+
+
+
+*******************************************************************************
+* Version 1.4.2                                                               *
+*******************************************************************************
+
+Previous version: 1.4.1
+
+
+ Changes
+---------
+
+- Plugin uploading improved
+- Popup window is now displayed when ERROR message received from server
+
+
+ Bug fixes
+-----------
+
+- Special characters in HTML reports ('<','>','&') now encoded correctly
+- Bugfix: "Save password" function doesn't work
+- Crash in HTML report generator
+- Crash while scanning due to incorrect current plugin number sent by server
+- Crash when starting scan using Nessus 1.3.3 server (HF1)
+
+
+
+*******************************************************************************
+* Version 1.4.1                                                               *
+*******************************************************************************
+
+Previous version: 1.4.0
+
+
+ New features
+--------------
+
+- Import results from NBE
+- Filtering vulnerabilities coming to report by severity
+
+
+ Changes
+---------
+
+- Compiled against latest OpenSSL library (0.9.6g)
+
+
+ Bug fixes
+-----------
+
+- Crash when deleting vulnerability in result browser
+- Crash when searching for vulnerability
+- Serach failed sometimes on patterns like *xxx*
+- Crash when comparing results
+- Some open port records in .nsr files was rejected as invalid when importing
+
+
+
+*******************************************************************************
+* Version 1.4.0                                                               *
+*******************************************************************************
+
+Previous version: 1.3.3
+
+
+ New features
+--------------
+
+- Communication protocol tracer
+- Results browser now allows to:
+   - Edit vulnerability description
+   - Delete vulnerability
+   - Delete vulnerabilities by plugin ID
+   - Search for vulnerabilities
+- Export session configuration to .nessusrc file
+- Import session configuration from .nessusrc file
+- Finding differences between two scan results
+- Added scan owner field (user who completes the scan) to scan results
+- Port range now can be specified in form of list (like 1-500,911,4000)
+- Well-known service list: it can be used both for scanning only specified
+  well-known ports and to resolve unknown services
+
+
+ Changes
+---------
+
+- If vulnerability is found on port which is not marked as open, this port
+  will be marked as open and open port counter will increase
+- Database checking tool now will create empty configuration for sessions with
+  missing configuration file
+- Results in result browser window now sorted by hostnames and services
+
+         
+ Bug fixes
+-----------
+
+- Removed unexpected message "You have database with old format" after first 
+  installation (when database still not created at all)
+- In HTML report generator - buffer overflow
+- In scanning thread - crash when receiving invalid current plugin id
+- Encryption key used for encrypting stored password was changing
+  under some circumstances
+- "cgi_path" preference was never set
+- Scan configuration was imported incorrectly from .enx files
+- When importing session targets, hostnames with "-" sign was droppped
+  as invalid
+
+
+
+*******************************************************************************
+* Version 1.3.3                                                               *
+*******************************************************************************
+
+Previous version: 1.3.2
+
+
+ New Features
+--------------
+
+- Support for user authentication using certificates
+- Support for different encryption methods, including: TLSv1 (default),
+  SSLv3 (was default in previous versions), SSLv23, SSLv2
+- Export scan results to comma-separated files (CSV)
+- "Quick connect" function - connect to server with credentials used for
+  previous connection, without asking anything
+- Ability to store server's password locally in registry
+
+
+ Changes
+---------
+
+- PEKS encryption is no longer supported - so you cannot use encrypted
+  communications with Nessus servers 1.0.x
+- Database format was changed, so database checking utility should be run
+  immediatelly after upgrade from previous version
+
+
+
+*******************************************************************************
+* Version 1.3.2                                                               *
+*******************************************************************************
+
+Previous version: 1.3.1
+
+ New Features
+--------------
+
+- Batch mode
+- Support for plugin preferences of type "file"
+- Plugin upload
+
+
+
+ Bug fixes
+-----------
+
+- Crash when scanning targets
+- Session renaming now working again
+- Bug in HTML report generator was fixed
+- Crash when importing scan results to MySQL database (SP2)
+- Crash in PDF report generation (SP3)
+
+
+
+*******************************************************************************
+* Version 1.3.1                                                               *
+*******************************************************************************
+
+Previous version: 1.3.0
+
+ New Features
+--------------
+
+- Export scan results to SQL command file
+- Export scan results directly into MySQL database
+
+
+ Changes
+---------
+
+- Debug options (in "Settings" dialog) slightly changed
+
+
+ Bug fixes
+-----------
+
+- Fixed bug with sessions copying
+- "Details" button in "SSL Certificate Management" dialog now working
+
+
+
+*******************************************************************************
+* Version 1.3.0                                                               *
+*******************************************************************************
+
+Previous version: 1.2.0
+
+ New Features
+--------------
+
+- Database checking tool. With this tool you can check your database
+  for inconsistencies and errors, and repair it. This tool is also used
+  to convert database to the new format.
+- "Safe checks" option added to session configuration.
+- Option to remove "finished" hosts from scan status window - can be useful
+  if you are scanning very large network.
+- Option for not to show session execution options added to session
+  configuration.
+- Export scan results into NSR or extended NSR formats
+- Import scan results from NSR or extended NSR formats 
+
+
+ Changes
+---------
+
+- Obsolete scan options are removed from session configuration.
+- Removed limit for 256 targets max. Now targets are limited only by available
+  system resources.
+- Database format has changed, so if you use NessusWX before, you should
+  run database checking after upgrade.
+- Application menu is restructured.
+- Scan results management dialog has changed.
+
+
+ Bug fixes
+-----------
+
+- Fixed incorrect tag in generated HTML reports.
+- Scan status window now correctly displays completion percents
+
+
+
+*******************************************************************************
+* Version 1.2.0                                                               *
+*******************************************************************************
+
+Previous version: 1.1.1
+
+ New Features
+--------------
+
+- SSL connection with Nessus 1.1.5+
+- SSL certificate management
+- Targets import from text file
+- Color scheme for message area now is customizable
+
+
+ Changes
+---------
+
+- New toolbar buttons added
+- All toolbar buttons now have tooltips
+
+
+ Bug Fixes
+-----------
+
+- Window size and position now saved correctly even if it is maximized
+
+
+
+*******************************************************************************
+* Version 1.1.1                                                               *
+*******************************************************************************
+
+Previous version: 1.1.0
+
+
+ Bug fixes
+-----------
+
+- Unexpected program termination when generation PDF report
+- Splitter between session list and message window now works more smoothly
+
+
+
+*******************************************************************************
+* Version 1.1.0                                                               *
+*******************************************************************************
+
+Previous version: 1.0.1
+
+
+ New features
+--------------
+
+- SSL connection with Nessus server (sslwrapd needed)
+- Scan configuration now can be included in report
+- Added checking for database directory existense
+- Server name now appears in main window title when connected
+- Session targets now displayed in detailed view
+
+
+ Changes
+---------
+
+- Now using PDFlib version 4.0.0
+
+
+ Bug fixes
+-----------
+
+- Hangup which occurs sometimes in PDF report generation was fixed
+- Session list now refreshes correctly after changing of session properties
+- Bug that main window grows each time you start NessusWX was fixed
